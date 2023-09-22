@@ -4,20 +4,40 @@ import UserData from './UserData'
 
 class NestingComponents extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             isLoaded: true,
-            isLoggedIn: true,
-        }
+            isLoggedIn: false,
+        };
     }
+
+handleSignIn = () => {
+    this.setState({
+        isLoggedIn: true,
+    });
+    console.log(this);
+}
+
+handleSignOut = () => {
+    this.setState({
+        isLoggedIn: false,
+    });
+    console.log(this);
+}
+
+
     render() {
         return (
             <div>
                 <UserData isLoaded={this.state.isLoaded} />
-                <UserMessage isLoggedIn={this.state.isLoggedIn}/>
+                <UserMessage 
+                    isLoggedIn={this.state.isLoggedIn}
+                    handleSignIn={this.handleSignIn}
+                    handleSignOut={this.handleSignOut}
+                />
             </div>
-        )
+        );
     }
 }
 
-export default NestingComponents
+export default NestingComponents;
